@@ -477,9 +477,9 @@
     chatBody.appendChild(userMsg);
 
     var reply = '';
-    if (topic.indexOf('General Service') !== -1) {
+    if (topic.indexOf('Periodic Service') !== -1 || topic.indexOf('General Service') !== -1) {
       reply = 'Our Mechanical & Regular Car Service starts from ₹499–₹1,000 onwards (including inspection, filters & throttle/carbon check). Share your car model on WhatsApp for an exact quote!';
-    } else if (topic.indexOf('AC Repair') !== -1) {
+    } else if (topic.indexOf('Car AC') !== -1 || topic.indexOf('AC Repair') !== -1) {
       reply = 'Car A/C Inspection & Servicing starts from ₹1,000 onwards (gas refill, cooling coil & compressor check). Tap below to book your slot on WhatsApp.';
     } else if (topic.indexOf('Dent') !== -1) {
       reply = 'Dent & Paint work starts from ₹1,000 onwards per panel with original colour matching. You can send a photo of the dent on WhatsApp for an instant estimate!';
