@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Malik| Multi-Brand Car Workshop in Garima Garden, Ghaziabad</title>
+<meta name="description" content="Malik Motors (Est. 2002) is a trusted multi-brand car workshop at Shalimar City, Wazirabad Rd, Garima Garden, Ghaziabad offering mechanical repair, dent & paint, car AC, CNG service, battery jump-start, doorstep inspection, and car wash.">
+<meta name="theme-color" content="#2b323d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* AI Assistant Button & Widget Styles */
+  .ai-nav-btn {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: #fff !important;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .ai-nav-btn:hover { transform: translateY(-2px); opacity: 0.95; }
+
+  .btn.ai-hero-btn {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.4);
+  }
+
+  .floating-ai {
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    z-index: 999;
+    background: linear-gradient(135deg, #4f46e5, #ec4899);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.45);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .floating-ai:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(236, 72, 153, 0.6);
+  }
+  .floating-ai .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ade80;
+  }
+
+  .ai-modal-overlay {
+    position: fixed;
+    bottom: 145px;
+    right: 20px;
+    width: 350px;
+    max-width: calc(100vw - 40px);
+    background: #12151b;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #f3f4f6;
+  }
+  .ai-modal-overlay.active { display: flex; }
+
+  .ai-header {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ai-header h4 { margin: 0; font-size: 15px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+  .ai-header small { display: block; font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 400; margin-top: 2px; }
+  .ai-close { background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; line-height: 1; }
+
+  .ai-body {
+    padding: 14px;
+    max-height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .ai-msg {
+    background: #1e232d;
+    padding: 10px 12px;
+    border-radius: 12px;
+    line-height: 1.45;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .ai-msg.user {
+    background: #4f46e5;
+    color: #fff;
+    align-self: flex-end;
+  }
+  .ai-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .ai-chip {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    color: #c7d2fe;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ai-chip:hover { background: rgba(99, 102, 241, 0.35); color: #fff; }
+
+  .ai-footer {
+    padding: 10px 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    gap: 8px;
+    background: #0e1116;
+  }
+  .ai-footer input {
+    flex: 1;
+    background: #1a1f29;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 12.5px;
+    outline: none;
+  }
+  .ai-footer button {
+    background: #25d366;
+    color: #051b0c;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div>Multi-Brand Car Workshop ·Wazirabad Rd, near CNG Pump, Garima Garden, Ghaziabad, UP 201006 · Open Daily 9:30 PM</div>
+  <a href="tel:+919718399516">Call: +91 97183 99516</a>
+</div>
+
+<!-- Header / Nav -->
+<header class="nav">
+  <a class="brand" href="#home">
+    <span class="brand-mark">Malik</span>
+    <span><b>Malik Motors</b><small>Multi-Brand Car Workshop</small></span>
+  </a>
+  <button class="menu" aria-label="Open menu">☰</button>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+    <button type="button" class="ai-nav-btn" onclick="toggleAiModal()">✨ AI Car Advisor</button>
+    <a class="nav-cta" href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20would%20like%20to%20book%20a%20car%20service." target="_blank" rel="noopener">Book Service</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="eyebrow">TRUSTED AUTO CARE SINCE 2002 · GARIMA GARDEN, GHAZIABAD</div>
+      <h1>YOUR CAR.<br><em>OUR EXPERTISE.</em></h1>
+      <p>24+ years of trusted multi-brand car repair, engine diagnostics, dent & paint, Car A/C, CNG kit servicing, suspension, and doorstep breakdown support on Main Wazirabad Road.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20want%20to%20book%20a%20service%20for%20my%20car." target="_blank" rel="noopener">WhatsApp Booking ↗</a>
+        <button type="button" class="btn ai-hero-btn" onclick="toggleAiModal()">🤖 Ask AI Mechanic</button>
+        <a class="btn ghost" href="tel:+919718399516">Call: 097183 99516</a>
+      </div>
+      <div class="trust">
+        <span><strong>24+ Yrs</strong><small>In Business (Est. 2002)</small></span>
+        <span><strong>All Brands</strong><small>Maruti, Hyundai, Tata, Mahindra & more</small></span>
+        <span><strong>Doorstep</strong><small>Inspection & Breakdown Support</small></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Ticker -->
+  <section class="ticker">
+    <div>ENGINE & MECHANICAL</div>
+    <div>DENT & PAINT</div>
+    <div>CAR A/C REPAIR</div>
+    <div>CNG & SUSPENSION</div>
+    <div>THROTTLE & CARBON CLEANING</div>
+    <div>ACCIDENT RESTORATION</div>
+    <div>BATTERY JUMP-START</div>
+    <div>CAR WASH & SPA</div>
+  </section>
+
+  <!-- Services Section (Tailored to Malik Motors Offerings) -->
+  <section id="services" class="section">
+    <div class="section-head">
+      <div>
+        <span class="kicker">WHAT WE DO</span>
+        <h2>Complete Car Care<br><em>Under One Roof.</em></h2>
+      </div>
+      <p>From routine periodic servicing and engine carbon cleaning to major collision bodywork and doorstep breakdown assistance, Malik Motors is your one-stop workshop on Wazirabad Road, Ghaziabad.</p>
+    </div>
+    <div class="service-grid">
+      <article>
+        <b>01</b>
+        <h3>Mechanical & Engine Repair</h3>
+        <p>Complete engine diagnostics, throttle body repair, engine carbon cleaning, clutch overhaul, brake systems, and regular car service (₹499 onwards).</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20mechanical%20or%20engine%20repair%20service." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+      <article>
+        <b>02</b>
+        <h3>Dent & Paint Studio</h3>
+        <p>Precision dent removal, scratch repair, panel beating, and high-gloss colour-matched booth painting for accident and bumper damage (₹1,000 onwards).</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20dent%20and%20paint%20work." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+      <article>
+        <b>03</b>
+        <h3>Car A/C Service & Gas</h3>
+        <p>A/C cooling inspection, refrigerant gas recharging, compressor repair, condenser replacement, and cabin coil cleaning (₹1,000 onwards).</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20car%20AC%20service%20and%20cooling%20check." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+      <article>
+        <b>04</b>
+        <h3>Suspension, Shocker & Axle</h3>
+        <p>Front axle service, shocker repair, steering rack work, wheel alignment, and suspension fitment for smooth driving on rough roads (₹500 onwards).</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20suspension%2C%20shocker%20or%20axle%20repair." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+      <article>
+        <b>05</b>
+        <h3>CNG Kit, Exhaust & Radiator</h3>
+        <p>CNG kit installation & tuning, radiator cooling flush, overheating repair, and exhaust system maintenance near Shalimar City CNG Pump.</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20CNG%20kit%20or%20radiator%20cooling%20repair." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+      <article>
+        <b>06</b>
+        <h3>Accident Repair & Restoration</h3>
+        <p>Full collision repair, structural bodywork, windshield & glass replacement, sunroof repair, and head/tail light restoration.</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20accident%20repair%20or%20car%20restoration." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+      <article>
+        <b>07</b>
+        <h3>Battery, Wiring & Jump-Start</h3>
+        <p>24/7 battery jump-start assistance, electrical wiring diagnostics, alternator checks, power window/lock repair, and battery replacement (₹300 onwards).</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20battery%20jump-start%20or%20electrical%20wiring%20service." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+      <article>
+        <b>08</b>
+        <h3>Car Wash, Detailing & Doorstep</h3>
+        <p>Foam car wash, interior vacuuming, rubbing/polishing, glass & light restoration (₹250 onwards), plus convenient doorstep vehicle pickup & inspection.</p>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20a%20car%20wash%20or%20doorstep%20service." target="_blank" rel="noopener">Enquire →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="split">
+    <div class="image-stack">
+      <img src="assets/workshop-1.jpg" alt="Malik Motors workshop in Garima Garden Ghaziabad">
+      <img class="small-img" src="assets/jeep-1.jpg" alt="Vehicle repair and restoration at Malik Motors">
+    </div>
+    <div class="copy">
+      <span class="kicker">WHY MALIK MOTORS</span>
+      <h2>A Workshop Built Around <em>Real Car Work.</em></h2>
+      <p>Established in 2002, Malik Motors has served car owners for over 24 years from our convenient location right next to the Shalimar City CNG Pump on Main Wazirabad Road, Garima Garden (Sahibabad / Ghaziabad).</p>
+      <ul>
+        <li><span>✓</span> Servicing Maruti Suzuki, Hyundai, Tata, Mahindra, Honda, Kia & Toyota</li>
+        <li><span>✓</span> Engine carbon cleaning, throttle body, clutch & suspension specialists</li>
+        <li><span>✓</span> Full denting, painting, windshield, sunroof & collision restoration</li>
+        <li><span>✓</span> Doorstep inspection, emergency breakdown & battery jump-start</li>
+        <li><span>✓</span> Transparent estimates with direct WhatsApp & phone support</li>
+      </ul>
+      <a class="text-link" href="#contact">Visit / Contact Workshop →</a>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div><strong>2002</strong><span>Established</span></div>
+    <div><strong>24+ Yrs</strong><span>Workshop Experience</span></div>
+    <div><strong>10+</strong><span>Specialized Car Services</span></div>
+    <div><strong>9:30 PM</strong><span>Open Daily Until</span></div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section dark">
+    <div class="section-head">
+      <div>
+        <span class="kicker">WORKSHOP GALLERY</span>
+        <h2>Cars In. <em>Confidence Out.</em></h2>
+      </div>
+      <p>Glimpses of multi-brand servicing, mechanical repairs, bodywork, and detailing at Malik Motors.</p>
+    </div>
+    <div class="gallery">
+      <img src="assets/car-1.jpg" alt="Multi-brand car service at Malik Motors">
+      <img src="assets/jeep-1.jpg" alt="SUV workshop repair">
+      <img src="assets/workshop-2.jpg" alt="Malik Motors service bay">
+      <img src="assets/car-2.jpg" alt="Mechanical and engine repair">
+      <img src="assets/car-3.jpg" alt="Cars lined up for periodic maintenance">
+      <img src="assets/engine.jpg" alt="Engine carbon cleaning and throttle body service">
+      <img src="assets/car-4.jpg" alt="Auto bodywork and denting painting">
+      <img src="assets/car-5.jpg" alt="Car wash and polishing finish">
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="section">
+    <div class="section-head">
+      <div>
+        <span class="kicker">HOW IT WORKS</span>
+        <h2>Simple. Direct.<br><em>Workshop Ready.</em></h2>
+      </div>
+    </div>
+    <div class="process">
+      <div>
+        <span>01</span>
+        <h3>Tell Us the Issue</h3>
+        <p>Call, WhatsApp, or use our AI Car Advisor to share your car model and problem.</p>
+      </div>
+      <div>
+        <span>02</span>
+        <h3>Visit or Book Doorstep</h3>
+        <p>Drop by near Shalimar City CNG Pump on Wazirabad Rd, or request doorstep inspection.</p>
+      </div>
+      <div>
+        <span>03</span>
+        <h3>Inspection & Estimate</h3>
+        <p>Get a clear diagnosis and upfront price estimate before any repair work starts.</p>
+      </div>
+      <div>
+        <span>04</span>
+        <h3>Repair & Delivery</h3>
+        <p>We complete the mechanical, A/C, or body repair and hand back your car road-ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta">
+    <div>
+      <span class="kicker">READY WHEN YOU ARE</span>
+      <h2>Need Your Car Checked Today?</h2>
+      <p>Message us on WhatsApp or use our AI Assistant for instant guidance and booking at Malik Motors.</p>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="btn primary" href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20want%20to%20enquire%20about%20car%20service." target="_blank" rel="noopener">Start WhatsApp Enquiry ↗</a>
+      <button type="button" class="btn ai-hero-btn" onclick="toggleAiModal()">✨ Launch AI Advisor</button>
+    </div>
+  </section>
+
+  <!-- Contact & Map Section -->
+  <section id="contact" class="contact">
+    <div>
+      <span class="kicker">CONTACT</span>
+      <h2>Bring Your Car<br><em>To Malik Motors.</em></h2>
+      <p class="address">
+        Shalimar City, C-511/1, Main Wazirabad Rd,<br>
+        Near CNG Pump, Garima Garden, Sahibabad,<br>
+        Ghaziabad, Uttar Pradesh 201006
+      </p>
+      <div class="contact-links">
+        <a href="tel:+919718399516">+91 97183 99516</a>
+        <a href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20need%20assistance%20with%20my%20car." target="_blank" rel="noopener">WhatsApp Workshop</a>
+        <a href="https://maps.app.goo.gl/yizMPG6TgQzPEop1A" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+      </div>
+    </div>
+    <div class="map">
+      <iframe
+        title="Malik Motors Location Map"
+        src="https://www.google.com/maps?q=Malik%20Motors%2C%20Shalimar%20City%2C%20511%2F1%2C%20Wazirabad%20Rd%2C%20near%20by%20CNG%20Pump%2C%20Garima%20Garden%2C%20Ghaziabad%2C%20Uttar%20Pradesh%20201006&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <span class="brand-mark">Malik</span>
+    <div>
+      <b>MALIK MOTORS</b>
+      <small>Multi-Brand Car Workshop · Est. 2002</small>
+    </div>
+  </div>
+  <p>© 2026 Malik Motors. All rights reserved.</p>
+  <p class="credit">Website & digital services by <a href="mailto:mdskhan2002@gmail.com">Infotech Software</a> · <a href="https://wa.me/917701921073" target="_blank" rel="noopener">+91 77019 21073</a></p>
+</footer>
+
+<!-- Floating AI Assistant Button -->
+<button type="button" class="floating-ai" onclick="toggleAiModal()" aria-label="Open Malik Motors AI Assistant">
+  <span class="pulse-dot"></span>
+  🤖 AI Assistant
+</button>
+
+<!-- Floating WhatsApp Button -->
+<a class="floating-wa" href="https://wa.me/919718399516?text=Hi%20Malik%20Motors%2C%20I%20would%20like%20to%20book%20a%20car%20service." target="_blank" rel="noopener" aria-label="WhatsApp Malik Motors">WA</a>
+
+<!-- Interactive AI Assistant Modal -->
+<div class="ai-modal-overlay" id="aiModal">
+  <div class="ai-header">
+    <div>
+      <h4>🤖 Malik Motors AI Advisor</h4>
+      <small>Instant Estimate & Breakdown Help</small>
+    </div>
+    <button type="button" class="ai-close" onclick="toggleAiModal()" aria-label="Close AI Assistant">✕</button>
+  </div>
+  <div class="ai-body" id="aiChatBody">
+    <div class="ai-msg">
+      Namaste! 👋 Welcome to <b>Malik Motors</b> (Wazirabad Rd, near Shalimar City CNG Pump). How can I help with your car today?
+      <div class="ai-chips">
+        <button type="button" class="ai-chip" onclick="selectAiTopic('Periodic Service & Oil Change')">🔧 General Service</button>
+        <button type="button" class="ai-chip" onclick="selectAiTopic('Car AC Not Cooling')">❄️ AC Repair</button>
+        <button type="button" class="ai-chip" onclick="selectAiTopic('Dent, Scratch or Paint Work')">🎨 Dent & Paint</button>
+        <button type="button" class="ai-chip" onclick="selectAiTopic('Emergency Battery Jump-Start / Breakdown')">🚨 Breakdown / Battery</button>
+        <button type="button" class="ai-chip" onclick="selectAiTopic('Engine / Clutch / Suspension Issue')">⚙️ Engine & Suspension</button>
+        <button type="button" class="ai-chip" onclick="selectAiTopic('Location & Timings')">📍 Location & Hours</button>
+      </div>
+    </div>
+  </div>
+  <div class="ai-footer">
+    <input type="text" id="aiCustomInput" placeholder="Type car model & issue..." onkeypress="if(event.key==='Enter') sendAiToWhatsApp()">
+    <button type="button" onclick="sendAiToWhatsApp()">Send WA ↗</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  function toggleAiModal() {
+    var modal = document.getElementById('aiModal');
+    modal.classList.toggle('active');
+  }
+
+  function selectAiTopic(topic) {
+    var chatBody = document.getElementById('aiChatBody');
+
+    var userMsg = document.createElement('div');
+    userMsg.className = 'ai-msg user';
+    userMsg.textContent = topic;
+    chatBody.appendChild(userMsg);
+
+    var reply = '';
+    if (topic.indexOf('General Service') !== -1) {
+      reply = 'Our Mechanical & Regular Car Service starts from ₹499–₹1,000 onwards (including inspection, filters & throttle/carbon check). Share your car model on WhatsApp for an exact quote!';
+    } else if (topic.indexOf('AC Repair') !== -1) {
+      reply = 'Car A/C Inspection & Servicing starts from ₹1,000 onwards (gas refill, cooling coil & compressor check). Tap below to book your slot on WhatsApp.';
+    } else if (topic.indexOf('Dent') !== -1) {
+      reply = 'Dent & Paint work starts from ₹1,000 onwards per panel with original colour matching. You can send a photo of the dent on WhatsApp for an instant estimate!';
+    } else if (topic.indexOf('Breakdown') !== -1) {
+      reply = 'We provide Battery Jump-Start & Doorstep Breakdown support near Garima Garden / Wazirabad Rd (₹300 onwards). Click below to send your location immediately!';
+    } else if (topic.indexOf('Engine') !== -1) {
+      reply = 'We specialize in Engine Carbon Cleaning, Throttle Body, Clutch Overhaul, Shocker & Front Axle repairs (₹500 onwards). Let our head mechanic inspect your car.';
+    } else {
+      reply = '📍 Address: Shalimar City, C-511/1, Main Wazirabad Rd, near CNG Pump, Garima Garden, Ghaziabad 201006. Open daily till 9:30 PM.';
+    }
+
+    var botMsg = document.createElement('div');
+    botMsg.className = 'ai-msg';
+    var waUrl = 'https://wa.me/919718399516?text=' + encodeURIComponent('Hi Malik Motors (via AI Assistant), I need help with: ' + topic);
+    botMsg.innerHTML = reply + '<br><br><a href="' + waUrl + '" target="_blank" rel="noopener" style="color:#4ade80;font-weight:700;text-decoration:underline;">👉 Continue on WhatsApp (097183 99516)</a>';
+    chatBody.appendChild(botMsg);
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function sendAiToWhatsApp() {
+    var input = document.getElementById('aiCustomInput');
+    var text = input.value.trim() || 'I want to enquire about car repair at Malik Motors.';
+    var url = 'https://wa.me/919718399516?text=' + encodeURIComponent('Hi Malik Motors (via AI Advisor): ' + text);
+    window.open(url, '_blank');
+  }
+</script>
+</body>
+</html>

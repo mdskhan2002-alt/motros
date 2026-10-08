@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 110" width="100%" height="100%">
+  <defs>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="shieldBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e2430"/>
+      <stop offset="100%" stop-color="#0b0d10"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Pill -->
+  <rect width="420" height="110" rx="18" fill="#0b0d10"/>
+
+  <!-- Emblem Shield -->
+  <g transform="translate(20, 13)">
+    <path d="M42 4L76 16V40C76 62 61.5 75.5 42 81C22.5 75.5 8 62 8 40V16L42 4Z" fill="url(#shieldBg)" stroke="url(#accentGrad)" stroke-width="4"/>
+    <!-- Car Roof Silhouette -->
+    <path d="M20 34C27 24 35 21 44 21C53 21 60 25 65 34" stroke="url(#accentGrad)" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+    <!-- Double M Monogram -->
+    <path d="M21 58V36L31.5 49L42 33L52.5 49L63 36V58" stroke="#ffffff" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Speed Line -->
+    <path d="M29 66H55" stroke="url(#accentGrad)" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="115" y="58" font-family="'Barlow Condensed', 'Arial Black', sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="1.5">
+    MALIK <tspan fill="url(#accentGrad)">MOTORS</tspan>
+  </text>
+  <text x="117" y="80" font-family="'Inter', Arial, sans-serif" font-size="12" font-weight="700" fill="#9ca3af" letter-spacing="3.5">
+    MULTI-BRAND CAR WORKSHOP
+  </text>
+</svg>
